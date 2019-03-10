@@ -1,65 +1,12 @@
-<div class="posts">
-  <% @posts.each do |post| %>
-    <section class="post">
-      <div class="user">
-        <div class="avatar">
-         <% if post.user.avatar.attached? %>
-          <%= link_to user_path(post.user) do %>
-           <%= image_tag post.user.avatar %>
-          <% end %>
-         <% end %>
-        </div>
-        <div class="username">
-          <%= post.user.username %>
-        </div>
-        <%= link_to post.user.username, user_path(post.user), class: 'username' %>
-      </div>
-      <%= image_tag post.image, class: 'main-image' %>
-      <div class="description">
-        <%= post.description %>
-      </div>
-    </section>
-  <% end %>
-  <%= paginate @posts %>
+<div class="homepage">
+  <div class='form-upload'>
+    <%= render 'upload_form' %>
+  </div>
+
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <%= render partial: 'post', locals: { post: post } %>
+    <% end %>
+    <%= paginate @posts %>
+  </div>
 </div>
-<style media="screen">
-  .posts{
-  margin: 50px 180px 10px;
-  .post{
-    border: 1px solid #efefef;
-    margin: 60px 0;
-    border-radius: 3px;
-    .user{
-      border-bottom: 1px solid #efefef;
-      display: flex;
-      .avatar{
-        width: 30px;
-        margin: 8px;
-        img{
-          width: 100%;
-          border: 1px solid #efefef;
-          border-radius: 50%;
-        }
-      }
-      .username{
-        padding-top: 13px;
-        color: #262626;
-        font-size: 14px;
-        font-weight: 600;
-      }
-    }
-    .main-image{
-      width: 100%;
-      border-bottom: 1px solid #f4f4f4;
-    }
-    .description{
-      padding: 20px;
-    }
-  }
-}
-.pagination{
-    span{
-      padding-right: 10px;
-    }
-  }
-</style>
