@@ -25,14 +25,13 @@
               <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
             <% end %>
           </form>
-
         </div>
         <div class="user-section">
           <a><i class="fa fa-compass"></i></a>
           <a><i class="fa fa-heart"></i></a>
           <% if user_signed_in? %>
-            <a href=”<%= user_path(current_user)%>”>
-              <i class=”fa fa-user”></i>
+            <a href="<%= user_path(current_user)%>">
+              <i class="fa fa-user"></i>
             </a>
           <% else %>
             <a href="<%= new_user_session_path%>">
